@@ -15,3 +15,7 @@
 - (NSArray*)filter: (BOOL (^)(id each))block;
 - (NSArray*)collect: (id (^)(id each))block;
 @end
+
+@interface NSDictionary(NSDictionaryIterators)
+- (void)keysAndValues: (void (^)(id key, id value))block;
+@end

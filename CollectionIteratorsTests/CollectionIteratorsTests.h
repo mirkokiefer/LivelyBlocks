@@ -13,6 +13,7 @@
 @private
   NSArray* animals;
   NSArray* fishes;
+  NSArray* animalsCategorized;
 }
 
 @end
