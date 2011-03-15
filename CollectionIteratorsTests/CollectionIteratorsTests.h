@@ -11,7 +11,8 @@
 
 @interface CollectionIteratorsTests : SenTestCase {
 @private
-    
+  NSArray* animals;
+  NSArray* fishes;
 }
 
 @end
