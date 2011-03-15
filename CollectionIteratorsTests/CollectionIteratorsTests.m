@@ -1,10 +1,4 @@
-//
-//  CollectionIteratorsTests.m
-//  CollectionIteratorsTests
-//
-//  Created by Mirko on 3/14/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
+//  Created by Mirko Kiefer (http://www.mirkokiefer.com) on 3/14/11.
 
 #import "CollectionIteratorsTests.h"
 #import "CollectionIterators.h"
