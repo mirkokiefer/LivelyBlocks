@@ -8,6 +8,7 @@
 - (void)forEachIndexed: (void (^)(id each, NSInteger index))block;
 - (NSArray*)filter: (BOOL (^)(id each))block;
 - (NSArray*)collect: (id (^)(id each))block;
+- (NSArray *)reversedArray;
 @end
 
 @interface NSDictionary(NSDictionaryIterators)
