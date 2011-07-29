@@ -5,9 +5,11 @@
 
 @interface NSArray(NSArrayIterators)
 - (void)forEach: (void (^)(id each))block;
-- (void)forEachIndexed: (void (^)(id each, NSInteger index))block;
+- (void)forEachIndexed: (void (^)(id each, NSUInteger index))block;
 - (NSArray*)filter: (BOOL (^)(id each))block;
+- (NSArray*)filterIndexed: (BOOL (^)(id each, NSUInteger index))block;
 - (NSArray*)collect: (id (^)(id each))block;
+- (NSArray*)collectIndexed: (id (^)(id each, NSUInteger index))block;
 - (NSArray *)reversedArray;
 @end
 

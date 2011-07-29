@@ -11,8 +11,8 @@
   }
 }
 
-- (void)forEachIndexed: (void (^)(id each, NSInteger index))block {
-  NSInteger index = 0;
+- (void)forEachIndexed: (void (^)(id each, NSUInteger index))block {
+  NSUInteger index = 0;
   for(id each in self) {
     block(each, index);
     index++;
@@ -29,10 +29,32 @@
   return [NSArray arrayWithArray: newArray];
 }
 
+- (NSArray*)filterIndexed: (BOOL (^)(id each, NSUInteger index))block {
+  NSMutableArray* newArray = [NSMutableArray array];
+  NSUInteger index = 0;
+  for(id each in self) {
+    if(block(each, index)) {
+      [newArray addObject:each];
+    }
+    index++;
+  }
+  return [NSArray arrayWithArray: newArray];
+}
+
 - (NSArray*)collect: (id (^)(id each))block {
   NSMutableArray* newArray = [NSMutableArray array];
   for(id each in self) {
     [newArray addObject:block(each)];
+  }
+  return [NSArray arrayWithArray: newArray];
+}
+
+- (NSArray*)collectIndexed:(id (^)(id, NSUInteger))block {
+  NSMutableArray* newArray = [NSMutableArray array];
+  NSUInteger index = 0;
+  for(id each in self) {
+    [newArray addObject:block(each, index)];
+    index++;
   }
   return [NSArray arrayWithArray: newArray];
 }
