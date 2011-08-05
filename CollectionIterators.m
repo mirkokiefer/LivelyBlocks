@@ -79,3 +79,21 @@
 }
 
 @end
+
+@implementation NSNumber(NSNumberIterators)
+
+- (void)forEach:(void (^)())block {
+  NSInteger value = [self integerValue];
+  for(NSInteger i=0; i<value; i++) {
+    block();
+  }
+}
+
+- (void)forEachIndexed:(void (^)(NSInteger each))block {
+  NSInteger value = [self integerValue];
+  for(NSInteger i=0; i<value; i++) {
+    block(i);
+  }
+}
+
+@end

@@ -16,3 +16,8 @@
 @interface NSDictionary(NSDictionaryIterators)
 - (void)keysAndValues: (void (^)(id key, id value))block;
 @end
+
+@interface NSNumber(NSNumberIterators)
+- (void)forEach: (void (^)())block;
+- (void)forEachIndexed: (void (^)(NSInteger each))block;
+@end
