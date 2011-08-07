@@ -67,7 +67,7 @@ static LCBool* no;
 @synthesize conditions;
 
 + (id)match {
-  return [[[self alloc] init] autorelease];
+  return [[self alloc] init];
 }
 
 - (id)init {

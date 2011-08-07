@@ -13,12 +13,6 @@
   animalsCategorized = [NSArray arrayWithObjects: @"noFish", @"fish", @"noFish", @"fish", nil];
 }
 
-- (void)tearDown {
-  [animals release];
-  [fishes release];
-  [super tearDown];
-}
-
 - (void)testNSArrayForEach {
   NSMutableArray* resultArray = [NSMutableArray array];
   
@@ -80,30 +74,6 @@
     }
   }];
   STAssertTrue([resultArray isEqualToArray: fishes], @"NSDictionary keysAndValues: fails");
-}
-
-- (void)testLCBoolBlockifTrueifFalse {
-  IDBlock boolBlock = ^() {
-    return LCYes;
-  };
-  LCBool* trueEvaled = [boolBlock() ifYes:^(void) {
-    return LCYes;
-  } ifNo:^(void) {
-    return LCNo;
-  }];
-  
-  STAssertTrue(trueEvaled.value, @"failed");
-}
-
-- (void)testLCMatch {
-  LCMatch* match = [LCMatch match];
-  [match on:@"a" do:^id(void) {
-    return @"matched";
-  }];
-  [match on:@"b" do:^id(void) {
-    return @"not matched";
-  }];
-  STAssertEquals([match match:@"a"], @"matched", @"fails");
 }
 
 @end
