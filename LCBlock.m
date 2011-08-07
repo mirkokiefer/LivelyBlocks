@@ -7,17 +7,86 @@
 //
 
 #import "LCBlock.h"
+#import "CollectionIterators.h"
 
-@implementation LCBlock
+static LCBool* yes;
+static LCBool* no;
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        // Initialization code here.
-    }
-    
-    return self;
+@interface LCBool()
+@property(assign) BOOL value;
+@end
+
+@implementation LCBool
+@synthesize value;
+
++ (void)initialize {
+  if(self == [LCBool class]) {
+    yes = [[self alloc] initWith:YES];
+    no = [[self alloc] initWith:NO];
+  }
+}
+
++ (id)yes {
+  return yes;
+}
+
++ (id)no {
+  return no;
+}
+
++ (id)boolWith:(BOOL)val {
+  if(val) {
+    return yes;
+  } else {
+    return no;
+  }
+}
+
+- (id)initWith:(BOOL)val {
+  self = [super init];
+  self.value = val;
+  return self;
+}
+
+- (id)ifYes:(IDBlock)yesBlock ifNo:(IDBlock)noBlock {
+  if(self.value) {
+    return yesBlock();
+  } else {
+    return noBlock();
+  }
+}
+
+@end
+
+
+@interface LCMatch()
+@property(retain) NSMutableArray* keys;
+@property(retain) NSMutableArray* blocks;
+@end
+
+@implementation LCMatch
+@synthesize keys, blocks;
+
++ (id)match {
+  return [[[self alloc] init] autorelease];
+}
+
+- (id)init {
+  self = [super init];
+  self.keys = [NSMutableArray array];
+  self.blocks = [NSMutableArray array];
+  return self;
+}
+
+- (void)on:(id)object do:(IDBlock)block {
+  [self.keys addObject:object];
+  [self.blocks addObject:[block copy]];
+}
+
+- (id)match:(id)object {
+  NSInteger index = [self.keys indexOfObject:object];
+  IDBlock block = [self.blocks objectAtIndex:index];
+  return block();
 }
 
 @end

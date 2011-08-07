@@ -6,23 +6,27 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+
 typedef BOOL (^BoolBlock)();
 typedef void (^VoidBlock)();
 typedef id (^IDBlock)();
 
-@interface LCBoolBlock : NSObject
-+ (id)boolBlock:(BoolBlock)block;
-- (void)ifTrue:(VoidBlock)block ifFalse:(VoidBlock)block;
-- (BOOL)eval;
-@end
+#define LCYes [LCBool yes]
+#define LCNo [LCBool no]
 
-@interface LCVoidBlock : NSObject
-+ voidBlock:(VoidBlock)block;
-- (void)eval;
-@end
 
 @interface LCMatch : NSObject
 + (id)match;
-+ (id)matchWith:(NSArray*)conditions;
-- (id)on:(id)object eval:(IDBlock)block;
+- (void)on:(id)object do:(IDBlock)block;
+- (id)match:(id)object;
+@end
+
+@interface LCBool : NSObject
+@property(readonly) BOOL value;
++ (id)yes;
++ (id)no;
++ (id)boolWith:(BOOL)val;
+- (id)initWith:(BOOL)val;
+- (id)ifYes:(IDBlock)yesBlock ifNo:(IDBlock)noBlock;
 @end

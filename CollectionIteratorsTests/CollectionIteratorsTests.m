@@ -2,6 +2,7 @@
 
 #import "CollectionIteratorsTests.h"
 #import "CollectionIterators.h"
+#import "LCBlock.h"
 
 @implementation CollectionIteratorsTests
 
@@ -32,11 +33,21 @@
 - (void)testNSArrayForEachIndexed {
   NSMutableArray* resultArray = [NSMutableArray arrayWithObjects: @"a", @"b", @"c", @"d", nil];
   
-  [animals forEachIndexed:^(id each, NSInteger index) {
+  [animals forEachIndexed:^(id each, NSUInteger index) {
     [resultArray replaceObjectAtIndex:index withObject:each];
   }];
   
   STAssertTrue([resultArray isEqualToArray: animals], @"NSArray forEachIndexed: fails");
+}
+
+- (void)testNSArrayForEachOffsetStepSizeBlock {
+  NSMutableArray* resultArray = [NSMutableArray array];
+  
+  [animals forEachWithOffset:1 stepSize:2 block:^(id each) {
+    [resultArray addObject:each];
+  }];
+  NSArray* testArray = [[NSArray alloc] initWithObjects: @"Lionfish", @"Shark", nil];
+  STAssertTrue([resultArray isEqual: testArray], @"failed");
 }
 
 - (void)testNSArrayFilter {
@@ -70,6 +81,30 @@
     }
   }];
   STAssertTrue([resultArray isEqualToArray: fishes], @"NSDictionary keysAndValues: fails");
+}
+
+- (void)testLCBoolBlockifTrueifFalse {
+  IDBlock boolBlock = ^() {
+    return LCYes;
+  };
+  LCBool* trueEvaled = [boolBlock() ifYes:^(void) {
+    return LCYes;
+  } ifNo:^(void) {
+    return LCNo;
+  }];
+  
+  STAssertTrue(trueEvaled.value, @"failed");
+}
+
+- (void)testLCMatch {
+  LCMatch* match = [LCMatch match];
+  [match on:@"a" do:^id(void) {
+    return @"matched";
+  }];
+  [match on:@"b" do:^id(void) {
+    return @"not matched";
+  }];
+  STAssertEquals([match match:@"a"], @"matched", @"fails");
 }
 
 @end

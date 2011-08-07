@@ -19,6 +19,13 @@
   }
 }
 
+- (void)forEachWithOffset:(NSUInteger)offset stepSize:(NSUInteger)stepSize block: (void (^)(id each))block {
+  
+  for(NSUInteger index=offset; index<[self count]; index=index+stepSize) {
+    block([self objectAtIndex:index]);
+  }
+}
+
 - (NSArray*)filter: (BOOL (^)(id each))block {
   NSMutableArray* newArray = [NSMutableArray array];
   for(id each in self) {

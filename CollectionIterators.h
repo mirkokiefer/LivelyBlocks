@@ -6,6 +6,7 @@
 @interface NSArray(NSArrayIterators)
 - (void)forEach: (void (^)(id each))block;
 - (void)forEachIndexed: (void (^)(id each, NSUInteger index))block;
+- (void)forEachWithOffset:(NSUInteger)offset stepSize:(NSUInteger)stepSize block: (void (^)(id each))block;
 - (NSArray*)filter: (BOOL (^)(id each))block;
 - (NSArray*)filterIndexed: (BOOL (^)(id each, NSUInteger index))block;
 - (NSArray*)collect: (id (^)(id each))block;
