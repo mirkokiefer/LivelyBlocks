@@ -33,6 +33,11 @@ typedef id (^IDBlock)();
 
 typedef NSNumber* (^NumberFloatBlock)(CGFloat val);
 typedef CGFloat (^FloatNumberBlock)(NSNumber* val);
+typedef NSNumber* (^NumberIntegerBlock)(NSInteger val);
+typedef NSInteger (^IntegerNumberBlock)(NSNumber* val);
+
 
 extern const NumberFloatBlock oFloat;
 extern const FloatNumberBlock cFloat;
+extern const NumberIntegerBlock oInt;
+extern const IntegerNumberBlock cInt;

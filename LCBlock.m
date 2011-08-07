@@ -94,3 +94,11 @@ const NumberFloatBlock oFloat = ^(CGFloat val) {
 const FloatNumberBlock cFloat = ^(NSNumber* val) {
   return (CGFloat)[val floatValue];
 };
+
+const NumberIntegerBlock oInt = ^(NSInteger val) {
+  return [NSNumber numberWithInteger:val];
+};
+
+const IntegerNumberBlock cInt = ^(NSNumber* val) {
+  return [val integerValue];
+};
