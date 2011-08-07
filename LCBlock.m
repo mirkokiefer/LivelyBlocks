@@ -60,12 +60,11 @@ static LCBool* no;
 
 
 @interface LCMatch()
-@property(retain) NSMutableArray* keys;
-@property(retain) NSMutableArray* blocks;
+@property(retain) NSMutableDictionary* conditions;
 @end
 
 @implementation LCMatch
-@synthesize keys, blocks;
+@synthesize conditions;
 
 + (id)match {
   return [[[self alloc] init] autorelease];
@@ -73,19 +72,16 @@ static LCBool* no;
 
 - (id)init {
   self = [super init];
-  self.keys = [NSMutableArray array];
-  self.blocks = [NSMutableArray array];
+  self.conditions = [NSMutableArray array];
   return self;
 }
 
 - (void)on:(id)object do:(IDBlock)block {
-  [self.keys addObject:object];
-  [self.blocks addObject:[block copy]];
+  [self.conditions setObject:block forKey:object];
 }
 
 - (id)match:(id)object {
-  NSInteger index = [self.keys indexOfObject:object];
-  IDBlock block = [self.blocks objectAtIndex:index];
+  IDBlock block = [self.conditions objectForKey:object];
   return block();
 }
 
