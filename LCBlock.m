@@ -72,7 +72,7 @@ static LCBool* no;
 
 - (id)init {
   self = [super init];
-  self.conditions = [NSMutableArray array];
+  self.conditions = [NSMutableDictionary dictionary];
   return self;
 }
 
@@ -86,3 +86,11 @@ static LCBool* no;
 }
 
 @end
+
+const NumberFloatBlock oFloat = ^(CGFloat val) {
+  return [NSNumber numberWithFloat:val];
+};
+
+const FloatNumberBlock cFloat = ^(NSNumber* val) {
+  return (CGFloat)[val floatValue];
+};

@@ -30,3 +30,9 @@ typedef id (^IDBlock)();
 - (id)initWith:(BOOL)val;
 - (id)ifYes:(IDBlock)yesBlock ifNo:(IDBlock)noBlock;
 @end
+
+typedef NSNumber* (^NumberFloatBlock)(CGFloat val);
+typedef CGFloat (^FloatNumberBlock)(NSNumber* val);
+
+extern const NumberFloatBlock oFloat;
+extern const FloatNumberBlock cFloat;

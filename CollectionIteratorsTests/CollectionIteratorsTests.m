@@ -1,8 +1,7 @@
 //  Created by Mirko Kiefer (http://www.mirkokiefer.com) on 3/14/11.
 
 #import "CollectionIteratorsTests.h"
-#import "CollectionIterators.h"
-#import "LCBlock.h"
+#import "LivelyBlocks.h"
 
 @implementation CollectionIteratorsTests
 
