@@ -102,3 +102,11 @@ const NumberIntegerBlock oInt = ^(NSInteger val) {
 const IntegerNumberBlock cInt = ^(NSNumber* val) {
   return [val integerValue];
 };
+
+const LCBoolBoolBlock oBool = ^(BOOL val) {
+  return [LCBool boolWith:val];
+};
+
+const BoolLCBoolBlock cBool = ^(LCBool* val) {
+  return val.value;
+};
