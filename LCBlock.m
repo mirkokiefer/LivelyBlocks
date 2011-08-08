@@ -77,7 +77,7 @@ static LCBool* no;
 }
 
 - (void)on:(id)object do:(IDBlock)block {
-  [self.conditions setObject:block forKey:object];
+  [self.conditions setObject:[block copy] forKey:object];
 }
 
 - (id)match:(id)object {
