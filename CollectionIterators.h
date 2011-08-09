@@ -12,6 +12,8 @@
 - (NSArray*)collect: (id (^)(id each))block;
 - (NSArray*)collectIndexed: (id (^)(id each, NSUInteger index))block;
 - (NSArray *)reversedArray;
+- (BOOL)all:(BOOL (^)(id each))block;
+- (BOOL)any:(BOOL (^)(id each))block;
 @end
 
 @interface NSDictionary(NSDictionaryIterators)
