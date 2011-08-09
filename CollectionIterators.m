@@ -95,6 +95,14 @@
   return all;
 }
 
+- (id)objectForPredicate:(BOOL (^)(id each))block {
+  for (id anObject in self) {
+    if (block(anObject) == YES) {
+      return anObject;
+    }
+  }
+}
+
 @end
 
 @implementation NSDictionary(NSDictionaryIterators)
