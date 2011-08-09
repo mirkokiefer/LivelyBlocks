@@ -96,11 +96,13 @@
 }
 
 - (id)objectForPredicate:(BOOL (^)(id each))block {
+  id returnObject;
   for (id anObject in self) {
     if (block(anObject) == YES) {
-      return anObject;
+      returnObject = anObject;
     }
   }
+  return returnObject;
 }
 
 @end
