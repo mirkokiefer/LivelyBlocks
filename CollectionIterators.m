@@ -75,6 +75,26 @@
   return array;
 }
 
+- (BOOL)any:(BOOL (^)(id))block {
+  __block BOOL any = NO;
+  [self forEach:^(id each) {
+    if(block(each)) {
+      any = YES;
+    }
+  }];
+  return any;
+}
+
+- (BOOL)all:(BOOL (^)(id))block {
+  __block BOOL all = YES;
+  [self forEach:^(id each) {
+    if(!block(each)) {
+      all = NO;
+    }
+  }];
+  return all;
+}
+
 @end
 
 @implementation NSDictionary(NSDictionaryIterators)
