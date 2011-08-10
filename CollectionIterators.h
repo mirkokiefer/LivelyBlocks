@@ -14,6 +14,7 @@
 - (NSArray *)reversedArray;
 - (BOOL)all:(BOOL (^)(id each))block;
 - (BOOL)any:(BOOL (^)(id each))block;
+- (id)objectForPredicate:(BOOL (^)(id each))block;
 @end
 
 @interface NSDictionary(NSDictionaryIterators)

@@ -56,6 +56,20 @@ static LCBool* no;
   }
 }
 
+- (id)ifYesDo:(VoidBlock)block {
+  if (self.value == YES) {
+    block();
+  }
+  return self;
+}
+
+- (id)ifNoDo:(VoidBlock)block {
+  if (self.value == NO) {
+    block();
+  }
+  return self;
+}
+
 @end
 
 
