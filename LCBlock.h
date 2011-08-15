@@ -30,6 +30,8 @@ typedef NSValue* (^NSValueObject)(id value);
 + (id)boolWith:(BOOL)val;
 - (id)initWith:(BOOL)val;
 - (id)ifYes:(IDBlock)yesBlock ifNo:(IDBlock)noBlock;
+- (id)ifYesDo:(VoidBlock)block;
+- (id)ifNoDo:(VoidBlock)block;
 @end
 
 typedef NSNumber* (^NumberFloatBlock)(CGFloat val);
