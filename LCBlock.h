@@ -11,6 +11,7 @@
 typedef BOOL (^BoolBlock)();
 typedef void (^VoidBlock)();
 typedef id (^IDBlock)();
+typedef NSValue* (^NSValueObject)(id value);
 
 #define LCYes [LCBool yes]
 #define LCNo [LCBool no]
@@ -45,3 +46,5 @@ extern const NumberIntegerBlock oInt;
 extern const IntegerNumberBlock cInt;
 extern const LCBoolBoolBlock oBool;
 extern const BoolLCBoolBlock cBool;
+
+extern const NSValueObject oValFromObj;
