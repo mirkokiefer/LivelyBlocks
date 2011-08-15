@@ -110,3 +110,7 @@ const LCBoolBoolBlock oBool = ^(BOOL val) {
 const BoolLCBoolBlock cBool = ^(LCBool* val) {
   return val.value;
 };
+
+const NSValueObject oValFromObj = ^(id val) {
+  return [NSValue valueWithNonretainedObject:val];
+};
